@@ -1,4 +1,4 @@
-# Capistrano 3 Dotenv wrapper
+# Capistrano 3 Configuration Management
 
 ## Usage
 
