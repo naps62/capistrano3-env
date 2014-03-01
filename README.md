@@ -1,6 +1,6 @@
 # Capistrano 3 Configuration Management
 
-## Usage
+## Installation
 
 Add the gem to your Gemfile
 
@@ -9,21 +9,44 @@ Add the gem to your Gemfile
 Run `bundle` to update your `Gemfile.lock`
 Add the following to your `Capfile`:
 
-    require 'capistrano/dotenv'
+    require 'capistrano/env'
 
-The following tasks will be available to you:
+## Usage
 
-    dotenv:  # shows the current .env file
-    dotenv:get KEY # shows the current value of KEY from .env
-    dotenv:set KEY value
-    dotenv:delete KEY
+Rake (which is used by Capistrano) has a not so pratical way of specifying task
+arguments. To alleviate that issue, a small custom executable was made:
 
-# TODO
+    bundle exec cap-config [stage] [operation] [KEY] [VALUE]
 
-* Everything
+The possible use cases are the following:
 
-# Contributing
+    cap-env production get               # shows the current env file for
+    production
+    cap-env production set APP_ID 123456 # sets KEY=value
+    cap-env production get APP_ID        # shows the current value of KEY
+    cap-env production delete APP_ID     # deletes the given KEY
 
-This is a very early work, extracted from a specific project i'm working on.
-If you require a new feature, please open an issue, or preferably, a pull request with
-a proposed implementation
+Alternatively, you can use the underlying Capistrano tasks directly with `cap
+production TASK`, where `TASK` is one of the following:
+
+    env:get            # shows the current env file
+    env:get[KEY]       # KEY # shows the current value of KEY from the env file
+    env:set[KEY,value] # sets KEY=value in the env file
+    env:delete[KEY]    # deletes the given KEY
+
+
+## Configuration
+
+The following configurations are available to you in config/deploy.rb (default
+values are shown here, no need to set them)
+
+    set :config_backend, :dotenv # currently this is the only supported backend
+    set :config_file,    '.env'  # you might want to use .env.production instead
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request

@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Environment variables management for Capistrano 3}
   gem.homepage      = "https://github.com/naps62/capistrano-env"
   gem.licenses      = ['MIT']
+  gem.executables   << 'cap-env'
 
   gem.files         = `git ls-files`.split($/)
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})

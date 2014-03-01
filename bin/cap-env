@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+stage, cmd, key, value = ARGV
+
+args = case cmd
+  when /create/     then nil
+  when /get|delete/ then key
+  when /set/        then "#{key},#{value}"
+end
+
+args = "[#{args}]" if args
+task = "env:#{cmd}#{args}"
+
+require 'capistrano/all'
+ARGV.clear
+ARGV << stage
+ARGV << task
+Capistrano::Application.new.run
