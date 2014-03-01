@@ -1,10 +1,14 @@
-# Capistrano 3 Configuration Management
+# Capistrano 3 Env Management
+
+Small Capistrano utility that allows easy management of app-specific
+environment variables (currently supporting [dotenv](https://github.com/bkeepers/dotenv) only)
+
 
 ## Installation
 
 Add the gem to your Gemfile
 
-    gem 'capistrano-doenv', '~> 0.1.0'
+    gem 'capistrano3-env', '~> 0.1.0'
 
 Run `bundle` to update your `Gemfile.lock`
 Add the following to your `Capfile`:
