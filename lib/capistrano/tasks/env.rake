@@ -77,7 +77,10 @@ module Capistrano
         end
 
         def hashify(string)
-          Hash[string.split("\n").map {|val| val.split(/:|\n/).map(&:strip) }]
+          values = string.split("\n").map do |line|
+            line.split(/:|\n/, 2).map(&:strip)
+          end
+          Hash[values]
         end
 
         def stringify(values)
