@@ -20,7 +20,7 @@ Add the following to your `Capfile`:
 Rake (which is used by Capistrano) has a not so pratical way of specifying task
 arguments. To alleviate that issue, a small custom executable was made:
 
-    bundle exec cap-config [stage] [operation] [KEY] [VALUE]
+    bundle exec cap-env [stage] [operation] [KEY] [VALUE]
 
 The possible use cases are the following:
 
