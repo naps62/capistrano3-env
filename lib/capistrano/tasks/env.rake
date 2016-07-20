@@ -80,6 +80,7 @@ module Capistrano
           values = string.split("\n").map do |line|
             line.split(/:|\n/, 2).map(&:strip)
           end
+          values = values.reject { |v| v.empty? }
           Hash[values]
         end
 
