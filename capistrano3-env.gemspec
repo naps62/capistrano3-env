@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = "capistrano3-env"
-  gem.version       = '0.1.1'
+  gem.version       = '0.1.2'
   gem.authors       = ["Miguel Palhas"]
   gem.email         = ["mpalhas@gmail.com"]
   gem.description   = %q{Environment variables management for Capistrano 3}
